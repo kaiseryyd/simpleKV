@@ -1,0 +1,7 @@
+# ninja log v5
+1308	2594	1680764998871785000	lib/libgtest.a	71e65d464f5662c1
+2	443	1680764996717675629	external/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o	ae1ffc23364c6601
+2594	2613	1680764998891379000	lib/libgtest_main.a	23898a64e61ca2d6
+2613	2661	1680764998938417601	kv	78ff421791e55ea7
+1	1308	1680764997579429887	external/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o	9ac650eb36590c11
+1	465	1680764996740057707	CMakeFiles/kv.dir/main.cpp.o	72d8a5597b7ad5c5

@@ -1,0 +1,7 @@
+/Users/yangyiduo/Desktop/工作项目/kv/cmake-build-debug/CMakeFiles/kv.dir
+/Users/yangyiduo/Desktop/工作项目/kv/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/yangyiduo/Desktop/工作项目/kv/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/yangyiduo/Desktop/工作项目/kv/cmake-build-debug/external/googletest/CMakeFiles/gtest.dir
+/Users/yangyiduo/Desktop/工作项目/kv/cmake-build-debug/external/googletest/CMakeFiles/gtest_main.dir
+/Users/yangyiduo/Desktop/工作项目/kv/cmake-build-debug/external/googletest/CMakeFiles/edit_cache.dir
+/Users/yangyiduo/Desktop/工作项目/kv/cmake-build-debug/external/googletest/CMakeFiles/rebuild_cache.dir
