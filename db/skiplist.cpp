@@ -7,14 +7,43 @@
 namespace kv {
     template<typename Key, class Comparator, typename Allocator>
     void SkipList<Key, Comparator, Allocator>::Insert(const Key &key) {
-        Node* preStart[SkipListOption::kMaxHeight]{nullptr};
+        Node* preStart[SkipListOption::kMaxHeight] { nullptr };
         Node* node = findGreaterOrEqual(key, preStart);
         if (nullptr != node) {
-            int32_t height = randomHeight();
-            Node* n = newNode(key, height);
-            for (int i = 0; i < height; i++)
+            if (equal(node->key, key)) {
+                //exist
+                return;
+            }
         }
 
+        int32_t height = randomHeight();
+        int32_t cur_max_height = getMaxHeight();
+
+        if (height > cur_max_height) {
+            for (int32_t index = cur_max_height; index < height; ++index) {
+                preStart[index] = head_;
+            }
+            cur_height_.store(height);
+        }
+
+        Node* n = newNode(key, height);
+        /*
+         * 1
+         * ｜
+         * 1    2   3               9
+         * ｜   ｜   ｜              ｜
+         * 1 —— 2 —— 3 —— 4 —— 5 —— 9 —— 10
+         * insert 6
+         */
+        for (int32_t index = 0; index < height; ++index){
+            n->NoBarrier_Next(index, preStart[index]->NoBarrier_Next(index));
+            preStart[index]->NoBarrier_SetNext(index, n);
+        }
+    }
+
+    template<typename Key, class Comparator, typename Allocator>
+    bool SkipList<Key, Comparator, Allocator>::equal(const Key &a, const Key &b) {
+        return comparator_.Compare(a, b) == 0;
     }
 
 
@@ -27,6 +56,7 @@ namespace kv {
         return new (node_memory) Node(key);
 
     }
+
     //构造P=3/4的几何分布
     template<typename Key, class Comparator, typename Allocator>
     int32_t SkipList<Key, Comparator, Allocator>::randomHeight() {

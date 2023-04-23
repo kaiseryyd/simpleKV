@@ -30,6 +30,7 @@ namespace kv {
 
     private:
         Node* newNode(const Key& key, int32_t height);
+        bool equal(const Key& a, const Key& b);
         int32_t randomHeight();
         int32_t getMaxHeight();
         bool keyIsAfterNode(const Key& key, Node* n);
